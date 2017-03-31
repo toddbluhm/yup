@@ -21,7 +21,7 @@ function scopeToValue(promises, value) {
  * and collect them in an array
  */
 export function propagateErrors(endEarly, errors) {
-  return endEarly ? null : err => {
+  return endEarly ? err => { throw err; } : err => {
     errors.push(err)
     return err.value
   }
